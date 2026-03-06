@@ -131,14 +131,14 @@ Every Agent returns `buildResponse(code, message, data?)` — a standard JSON en
 
 ## Ground Rules for AI Assistants
 
-1. **Explain at 5th-grade level** — Cary prefers plain English over jargon
+1. **Apply step by step logic** — think logically and provide evidence from reserch sources or user context.
 2. **No-code first** — suggest GUI options before writing code
 3. **Confirm before destructive actions** — never overwrite without asking
 4. **Conventional commits** — format: `type: message` (e.g., `feat: add LoggerAgent`)
 5. **FERPA** — never include real student names, grades, or IDs anywhere
 6. **Check accounts** — always confirm which Google account is active before clasp operations
 7. **Phase-by-phase** — output one phase at a time, wait for confirmation before the next
-
+8. **Never guess at outputs** - if you have insufficient data or context to make a decision, do not guess. Instead, ask for more information.
 ---
 
 ## CLI Quick Reference
