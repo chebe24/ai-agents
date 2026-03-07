@@ -32,7 +32,7 @@ AI-Agents/
 │   ├── RelocationTracker.gs← SHSID onboarding document tracker
 │   └── agents/             ← Agent files (auto-scaffolded by CLI)
 │
-├── prod-project/           ← Production environment (chebert4@ebrschools.org)
+├── prod-project/           ← Production environment (cary.hebert@gmail.com)
 │   ├── Config.gs
 │   ├── Utilities.gs
 │   ├── Router.gs
@@ -48,7 +48,7 @@ AI-Agents/
 | Environment | Account                  | Google Sheet              |
 |-------------|--------------------------|---------------------------|
 | Dev         | cary.hebert@gmail.com    | AI Agents Command Hub     |
-| Prod        | chebert4@ebrschools.org  | Agents-Production-Log     |
+| Prod        | cary.hebert@gmail.com    | AI_Agents_Command_Hub     |
 
 **Never mix these.** `checkAccount()` in Utilities.gs will throw an error if the wrong account is active.
 

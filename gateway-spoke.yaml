@@ -1,6 +1,6 @@
 system_identity:
   agent_role: "Lifecycle & Migration Spoke"
-  parent_hub: "AI_Agents_Command_Hub (chebert4@ebrschools.org)"
+  parent_hub: "AI_Agents_Command_Hub (cary.hebert@gmail.com)"
   repository: "AI-Agents"
 
 governance:
@@ -11,7 +11,7 @@ governance:
   subject_codes: [MATH, Sci, SS, Fren, Comm]
 
 storage_policy:
-  work: "chebert4@ebrschools.org Google Drive"
+  work: "cary.hebert@gmail.com Google Drive"
   code: "GitHub chebe24/AI-Agents"
   local: "~/Documents/02_Projects/Proj_AI-Agents"
 

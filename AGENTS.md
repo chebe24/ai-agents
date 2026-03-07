@@ -178,14 +178,14 @@ cd ~/Documents/02_Projects/AI-Agents
 ## Last Session
 
 ```
-Date    : 2026-03-01
-Agent   : Claude
-Work    : v1.1 complete — Phase 2 LoggerAgent live and tested, Phase 3 scoped out
-          to File Organization project, FilingAgent Hub defined as v2.0 centerpiece,
-          agent-hub-research.md saved, ROADMAP.md updated, gcloud installed
-Files   : dev-project/agents/LoggerAgent.gs, dev-project/Config.gs,
-          dev-project/Router.gs, ROADMAP.md, AGENTS.md,
-          scripts/agent-hub-research.md
-Next    : v1.2 — CI/CD GitHub Actions, FilingAgent Hub planning
-Commit  : feat: v1.1 complete — LoggerAgent, FilingAgent roadmap, hub research saved
+Date    : 2026-03-07
+Agent   : Claude (Cowork mode)
+Work    : Prod account migrated from chebert4@ebrschools.org to cary.hebert@gmail.com.
+          New GAS Script ID and Command Hub Sheet ID applied across all config files.
+          Reason: school account expires August 2026 (Shanghai transition).
+Files   : prod-project/Config.gs, prod-project/.clasp.json,
+          gateway-spoke.yaml, CLAUDE.md, AGENTS.md, README.md
+Next    : Run ./ai-agents.sh deploy prod, set Script Properties in new GAS project,
+          deploy as webapp, update iOS Shortcuts with new URL
+Commit  : chore: migrate prod to personal Gmail account (cary.hebert@gmail.com)
 ```

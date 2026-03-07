@@ -1,13 +1,13 @@
 // =============================================================================
 // Config.gs — Gateway-OS PROD Environment Configuration
-// Account: chebert4@ebrschools.org
+// Account: cary.hebert@gmail.com
 // =============================================================================
 // ONE PLACE for all constants. Never hardcode these in other files.
 // =============================================================================
 
 const ENV             = "production";
-const ACCOUNT         = "chebert4@ebrschools.org";
-const SPREADSHEET_ID  = "1qEZUBf4A1djNF5CstRxJa2UQbQqCnIZqavSF8mkKUpU";
+const ACCOUNT         = "cary.hebert@gmail.com";
+const SPREADSHEET_ID  = "1kWtc6Z_kdgCEMCkYyLd9U300MGxdZLr0NzNSESIUsUE";
 const SHEET_NAME      = "File Ops";
 
 // File validation rules

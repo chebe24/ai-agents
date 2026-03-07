@@ -24,7 +24,7 @@ There are two fully separate GAS projects:
 | Environment | Account                  | Google Sheet          | Sheet ID |
 |-------------|--------------------------|-----------------------|----------|
 | Dev         | cary.hebert@gmail.com    | AI Agents Command Hub | `1KVHxSLUSk1LpySX2K1ITRXqxJKV4h-dpnd_Ia4lV6_E` |
-| Prod        | chebert4@ebrschools.org  | Agents-Production-Log | `1qEZUBf4A1djNF5CstRxJa2UQbQqCnIZqavSF8mkKUpU` |
+| Prod        | cary.hebert@gmail.com    | AI_Agents_Command_Hub | `1kWtc6Z_kdgCEMCkYyLd9U300MGxdZLr0NzNSESIUsUE` |
 
 ---
 
@@ -79,7 +79,7 @@ AI-Agents/                          ← Git repo root
 | Env  | GAS Script ID | Web App URL |
 |------|---------------|-------------|
 | Dev  | `1o_3FUWvqXzFYeJOParcxBYcAacZy5Ig3MbgbTAX5TCixKrrchW7IBOBW` | https://script.google.com/macros/s/AKfycbxC3q2qNHivWzRpvLZdWnH8r5uuDTUTPn-NtPG_3g2lC6Gy1ErDiDZoGzJ_LSIp-_Z6mQ/exec |
-| Prod | `1B91NVhYy9SMt2ZuaUyL_c1Z0Woz1HkD8kjGGcFZ9XFL-jIA115iup0lu` | https://script.google.com/macros/s/AKfycbxbWWHUgQR6GAH2W4GVqZSOAwrAhJQVq-W9egIZV6mMH2-VFawj4KYj0INso1MtYTHw/exec |
+| Prod | `1Znk2rEPszw359bPAaxzVORGSOTby1vFNYp2oMR2N93lMb6Vo_gd9auib` | (deploy to get new URL — run ./ai-agents.sh deploy prod) |
 
 GitHub Secrets:
 - `CLASDEV_JSON` — clasp OAuth token for dev account
