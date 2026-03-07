@@ -1,6 +1,6 @@
 # AI-Agents / Gateway-OS Roadmap
 
-## Current Status: v1.2 Complete ✅
+## Current Status: v1.3 In Progress 🔧
 
 ### Completed
 - [x] Folder structure created
@@ -9,7 +9,7 @@
 - [x] Deploy scripts created (ai-agents.sh)
 - [x] Git repository initialized
 - [x] clasp login for dev account (cary.hebert@gmail.com)
-- [x] clasp login for prod account (chebert4@ebrschools.org)
+- [x] clasp login for prod account (migrated from chebert4@ebrschools.org → cary.hebert@gmail.com)
 - [x] First Apps Script deployment — dev and prod both live
 - [x] Gateway-OS modular architecture: Router.gs, Code.gs, Utilities.gs, Config.gs
 - [x] Webhook endpoint with secret guard (doPost)
@@ -32,14 +32,28 @@
 - [x] OCR routing: Math→33_Math, Mandarin→41_Mandarin, Admin→30_Administrative, no match→00_Inbox/Quarantine
 - [x] Full pipeline tested end-to-end Mar 1, 2026
 - [x] Tag v1.2-stable
+- [x] **March 7, 2026 — prod-project expanded and redeployed**
+- [x] LoggerAgent.gs, AddTabsOneTime.gs, SetScriptProperties.gs added to prod-project
+- [x] testSetup() verified in production — all Script Properties confirmed
+- [x] New prod deployment live — URL: https://script.google.com/macros/s/AKfycbxQiZQIiltlYtmomigjNsmSVC4z-WRoSFIHFrSjMEZ85t-ReCSuN4D-u0WxDJ--obon/exec
+- [x] AGENTCONTEXT.md created — AI-agnostic project context replacing CLAUDE.md as source of truth
+- [x] CLAUDE.md slimmed to a lightweight loader pointing to AGENTCONTEXT.md
 
 ---
 
 ## Version History
 
+### v1.2.1 (Complete — 2026-03-07)
+- prod-project expanded: LoggerAgent.gs, AddTabsOneTime.gs, SetScriptProperties.gs deployed
+- testSetup() verified — all Script Properties confirmed in prod
+- New prod web app deployment URL issued (previous deleted and redeployed)
+- Prod account migrated: chebert4@ebrschools.org → cary.hebert@gmail.com
+- AGENTCONTEXT.md created — single AI-agnostic source of truth for all AI assistants
+- CLAUDE.md converted to a lightweight loader
+
 ### v1.2 (Complete — 2026-03-01)
 - AI-Logbook pipeline fully deployed
-- ChatLogs + ProdLog tabs live in AI_Agents_Command_Hub (Spreadsheet ID: 1qEZUBf4A1dj...)
+- ChatLogs + ProdLog tabs live in AI_Agents_Command_Hub (Prod Sheet ID: 1kWtc6Z_kdgCEMCkYyLd9U300MGxdZLr0NzNSESIUsUE)
 - LoggerAgent writing V6-validated entries with WARN flagging for bad filenames
 - hazel_ocr_bridge.sh v4.0 — Dockerized OCR with eng+chi_sim language packs
 - OCR routing: Math→33_Math, Mandarin→41_Mandarin, Admin→30_Administrative

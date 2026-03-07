@@ -1,7 +1,7 @@
-# CLAUDE.md — Gateway-OS AI Assistant Context
+# CLAUDE.md
 
-> **For AI assistants (Claude, Gemini, etc.):** Read this first.
-> It tells you exactly what this project is, its current state, and how to help without breaking anything.
+> This file exists so Claude (and Claude Code / Cowork) auto-loads project context.
+> **All actual project information lives in AGENTCONTEXT.md — read that file first and in full.**
 
 ---
 

@@ -34,7 +34,7 @@ error() { echo -e "${RED}[ERROR]${NC} $*"; exit 1; }
 #
 # GitHub Secrets:
 #   CLASDEV_JSON  → ~/.clasprc.json for the dev account (cary.hebert@gmail.com)
-#   CLASPRC       → ~/.clasprc.json for the prod account (chebert4@ebrschools.org)
+#   CLASPRC       → ~/.clasprc.json for the prod account (cary.hebert@gmail.com)
 # =============================================================================
 refresh_clasp_auth() {
   local target="${1:-dev}"
@@ -180,11 +180,11 @@ deploy() {
       info "DEV deployment complete."
       ;;
     prod)
-      warn "You are about to push to PRODUCTION (chebert4@ebrschools.org)."
-      warn "This affects live classroom workflows."
+      warn "You are about to push to PRODUCTION (cary.hebert@gmail.com)."
+      warn "This affects live automations."
       read -rp "  Type 'yes-prod' to confirm: " confirm
       [[ "$confirm" != "yes-prod" ]] && error "Deployment cancelled."
-      info "Deploying PROD → Agents-Production-Log..."
+      info "Deploying PROD → AI_Agents_Command_Hub..."
       cd "$PROD_DIR"
       clasp push
       cd "$ROOT_DIR"
