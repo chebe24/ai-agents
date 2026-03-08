@@ -68,6 +68,9 @@ function doPost(e) {
       case "log":
         return LoggerAgent_init(payload);
 
+      case "inventory":
+        return _Router_wrapResponse(InventoryAgent_init(payload));
+
       // case "agentname":
       //   return AgentName_init(payload);
       // ──────────────────────────────────────────────────────────────────
@@ -87,6 +90,22 @@ function doPost(e) {
 // INLINE HANDLER — File Ops (kept in Router per project decision)
 // Validates and logs incoming file operation requests to the File Ops sheet.
 // =============================================================================
+
+/**
+ * Converts a plain Agent response object to a ContentService response.
+ * Agents return plain objects (for testability); Router wraps them for HTTP.
+ *
+ * @param {Object} plainResponse - Plain response object from Agent
+ * @returns {ContentService.TextOutput} HTTP response
+ */
+function _Router_wrapResponse(plainResponse) {
+  if (!plainResponse || typeof plainResponse !== 'object') {
+    return buildResponse(500, "Invalid Agent response");
+  }
+  return ContentService
+    .createTextOutput(JSON.stringify(plainResponse))
+    .setMimeType(ContentService.MimeType.JSON);
+}
 
 function _Router_handleFileOps(payload) {
   const fileName    = payload.fileName    || "";

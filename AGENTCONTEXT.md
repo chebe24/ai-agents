@@ -238,6 +238,7 @@ cd ~/Documents/02_Projects/Proj_AI-Agents
 7. **Phase-by-phase** — output one phase at a time, wait for confirmation before the next
 8. **Never guess** — if you lack context to make a decision, ask instead of assuming
 9. **One codebase** — prod and dev use the same patterns; changes in one should mirror the other
+10. **Code lives in GitHub only** — never save code files to local folders or Google Drive. All `.gs`, `.sh`, `.py`, `.js`, and config files belong in the GitHub repo and nowhere else.
 
 ---
 

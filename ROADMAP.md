@@ -2,6 +2,13 @@
 
 ## Current Status: v1.3 In Progress 🔧
 
+### v1.2.2 (Complete — 2026-03-07)
+- InventoryAgent.gs created — NexusAI update-db.gs migrated into Gateway-OS
+- Registered as `action: "inventory"` in both dev and prod Router.gs
+- NexusAI standalone security layer removed; replaced by Gateway-OS SecurityAgent + Utilities.gs patterns
+- `_Router_wrapResponse()` added to dev Router.gs (already present in prod)
+- Proj_NexusAI repo ready to archive
+
 ### Completed
 - [x] Folder structure created
 - [x] CLAUDE.md guidelines added
@@ -38,6 +45,8 @@
 - [x] New prod deployment live — URL: https://script.google.com/macros/s/AKfycbxQiZQIiltlYtmomigjNsmSVC4z-WRoSFIHFrSjMEZ85t-ReCSuN4D-u0WxDJ--obon/exec
 - [x] AGENTCONTEXT.md created — AI-agnostic project context replacing CLAUDE.md as source of truth
 - [x] CLAUDE.md slimmed to a lightweight loader pointing to AGENTCONTEXT.md
+- [x] **InventoryAgent.gs deployed** — NexusAI migrated into Gateway-OS as modular agent
+- [x] `inventory` route registered in dev + prod Router.gs
 
 ---
 
@@ -123,4 +132,4 @@ Router.gs will act as the supervisor, chaining workers as needed.
 
 ---
 
-Last updated: 2026-03-01
+Last updated: 2026-03-07

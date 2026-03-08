@@ -139,6 +139,7 @@ Every Agent returns `buildResponse(code, message, data?)` — a standard JSON en
 6. **Check accounts** — always confirm which Google account is active before clasp operations
 7. **Phase-by-phase** — output one phase at a time, wait for confirmation before the next
 8. **Never guess at outputs** - if you have insufficient data or context to make a decision, do not guess. Instead, ask for more information.
+9. **Code lives in GitHub only** — never save code files to local folders or Google Drive. All `.gs`, `.sh`, `.py`, `.js`, and config files belong in the GitHub repo and nowhere else.
 ---
 
 ## CLI Quick Reference

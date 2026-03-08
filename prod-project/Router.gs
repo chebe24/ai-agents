@@ -72,6 +72,9 @@ function doPost(e) {
         return _Router_wrapResponse(PatternRegistryAgent_sync());
 
       // ── Register new Agents below this line ───────────────────────────
+      case "inventory":
+        return _Router_wrapResponse(InventoryAgent_init(payload));
+
       // case "agentname":
       //   return AgentName_init(payload);
       // ──────────────────────────────────────────────────────────────────
