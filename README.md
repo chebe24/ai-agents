@@ -59,13 +59,13 @@ AI-Agents/
 All commands run from the project root:
 
 ```bash
-cd ~/Documents/02_Projects/AI-Agents
+cd ~/Developer/nexus-command
 ```
 
 ### Check / Rotate Authentication
 ```bash
 ./ai-agents.sh auth dev    # Check dev (cary.hebert@gmail.com)
-./ai-agents.sh auth prod   # Check prod (chebert4@ebrschools.org)
+./ai-agents.sh auth prod   # Check prod (cary.hebert@gmail.com)
 ```
 If clasp auth has expired, this re-authenticates and automatically rotates
 the corresponding GitHub Secret (`CLASDEV_JSON` for dev, `CLASPRC` for prod).

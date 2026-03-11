@@ -116,7 +116,7 @@ Every Agent returns `buildResponse(code, message, data?)` — a standard JSON en
 - `updateInventory()` Drive scan function
 - Router.gs cleaned — no unimplemented stubs
 
-### 🔧 In Progress
+### ✅ Complete (continued)
 - **Phase 2** — Dev modular refactor (agents/ subfolder, LoggerAgent)
 - **Phase 3** — RelocationBridge.py (Python → Drive upload → Webhook)
 
@@ -131,7 +131,7 @@ Every Agent returns `buildResponse(code, message, data?)` — a standard JSON en
 
 ## Ground Rules for AI Assistants
 
-1. **Apply step by step logic** — think logically and provide evidence from reserch sources or user context.
+1. **Apply step by step logic** — think logically and provide evidence from research sources or user context.
 2. **No-code first** — suggest GUI options before writing code
 3. **Confirm before destructive actions** — never overwrite without asking
 4. **Conventional commits** — format: `type: message` (e.g., `feat: add LoggerAgent`)
@@ -145,7 +145,7 @@ Every Agent returns `buildResponse(code, message, data?)` — a standard JSON en
 ## CLI Quick Reference
 
 ```bash
-cd ~/Documents/02_Projects/AI-Agents
+cd ~/Developer/nexus-command
 
 ./ai-agents.sh auth dev            # Verify dev token, auto-rotate GitHub Secret if expired
 ./ai-agents.sh auth prod           # Same for prod
