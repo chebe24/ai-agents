@@ -209,3 +209,6 @@ LoggerAgent/
 logger-agent/data/
 logger-agent/logs/
 logger-agent/venv/
+logger-agent/data/
+logger-agent/logs/
+logger-agent/venv/
