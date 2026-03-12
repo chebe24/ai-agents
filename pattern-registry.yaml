@@ -33,7 +33,7 @@ date_prefix:
 # SUBJECT CODES
 # ------------------------------------------------------------
 subject_codes:
-  MATH:
+  Math:
     label: "Mathematics"
     curriculum: "Eureka Math²"
   Sci:
@@ -84,28 +84,28 @@ patterns:
     full_regex: "^\\d{2}-\\d{4}-\\d{2}-\\d{2}_[A-Za-z0-9]+_LP_[A-Za-z0-9]+L\\d{2}-\\d{2}\\.[a-z]{2,4}$"
     example: "01-2026-08-15_ELA_LP_ReadingL03-02.pdf"
 
-  # --- MATH ---
+  # --- Math ---
   math_lp:
     label: "Math Lesson Plan"
-    subject: "MATH"
+    subject: "Math"
     filetype: "LP"
     description_pattern: "M\\dT(LA|[A-F])L\\d{2}-\\d{2}"
     description_notes: >
       M = Module, # = module number, T = Topic marker,
       Letter = A-F or LA (Topic letter), L##-## = Lesson range.
-    full_regex: "^\\d{2}-\\d{4}-\\d{2}-\\d{2}_MATH_LP_M\\dT(LA|[A-F])L\\d{2}-\\d{2}\\.[a-z]{2,4}$"
-    example: "01-2026-08-15_MATH_LP_M2TAL03-02.pdf"
+    full_regex: "^\\d{2}-\\d{4}-\\d{2}-\\d{2}_Math_LP_M\\dT(LA|[A-F])L\\d{2}-\\d{2}\\.[a-z]{2,4}$"
+    example: "01-2026-08-15_Math_LP_M2TAL03-02.pdf"
 
   math_annot:
     label: "Math Annotated Lesson"
-    subject: "MATH"
+    subject: "Math"
     filetype: "Annot"
     description_pattern: "M\\dT(LA|[A-F])L\\d{2}"
     description_notes: >
       Same as math_lp but ends with single lesson number L##.
       No dash-range at the end.
-    full_regex: "^\\d{2}-\\d{4}-\\d{2}-\\d{2}_MATH_Annot_M\\dT(LA|[A-F])L\\d{2}\\.[a-z]{2,4}$"
-    example: "01-2026-08-15_MATH_Annot_M2TAL03.pdf"
+    full_regex: "^\\d{2}-\\d{4}-\\d{2}-\\d{2}_Math_Annot_M\\dT(LA|[A-F])L\\d{2}\\.[a-z]{2,4}$"
+    example: "01-2026-08-15_Math_Annot_M2TAL03.pdf"
 
   # --- SCIENCE ---
   sci_lp:
