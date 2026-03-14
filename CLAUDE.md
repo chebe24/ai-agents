@@ -119,7 +119,7 @@ Every Agent returns `buildResponse(code, message, data?)` — a standard JSON en
 ### ✅ Complete (continued)
 - **Phase 2** — Dev modular refactor (agents/ subfolder, LoggerAgent)
 - **Phase 3** — RelocationBridge.py (Python → Drive upload → Webhook)
-- **ModelRouterAgent** — Gemini + Claude routes active. ChatGPT + Perplexity pending API keys.
+- **ModelRouterAgent** — All 4 routes active: Claude, Gemini, ChatGPT (GPT-4o), Perplexity. All API keys stored in Dev Script Properties.
 
 ### 🚫 Shelved
 - **RAG Engine** — Python / Chroma vector DB / trilingual standards embedding (not a priority)
