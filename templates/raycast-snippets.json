@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Gateway → Claude: Architecture",
+    "keyword": "!claude-arch",
+    "text": "curl -s -X POST \"https://script.google.com/macros/s/AKfycbxC3q2qNHivWzRpvLZdWnH8r5uuDTUTPn-NtPG_3g2lC6Gy1ErDiDZoGzJ_LSIp-_Z6mQ/exec\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"action\": \"route\",\n    \"task_type\": \"architecture\",\n    \"prompt\": \"You are a senior Google Apps Script architect. Review the following system and suggest a clean, modular structure with clear separation of concerns. Identify any anti-patterns and explain your recommendations: [DESCRIBE YOUR SYSTEM OR PASTE CODE HERE]\"\n  }'"
+  },
+  {
+    "name": "Gateway → Claude: Debug",
+    "keyword": "!claude-debug",
+    "text": "curl -s -X POST \"https://script.google.com/macros/s/AKfycbxC3q2qNHivWzRpvLZdWnH8r5uuDTUTPn-NtPG_3g2lC6Gy1ErDiDZoGzJ_LSIp-_Z6mQ/exec\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"action\": \"route\",\n    \"task_type\": \"debugging\",\n    \"prompt\": \"Debug the following code. Identify: 1) The most likely root cause, 2) The affected lines, 3) A corrected version with explanation. Do not rewrite unrelated parts.\\n\\nERROR:\\n[PASTE ERROR MESSAGE]\\n\\nCODE:\\n[PASTE CODE]\"\n  }'"
+  },
+  {
+    "name": "Gateway → Claude: Long-Form Writing",
+    "keyword": "!claude-write",
+    "text": "curl -s -X POST \"https://script.google.com/macros/s/AKfycbxC3q2qNHivWzRpvLZdWnH8r5uuDTUTPn-NtPG_3g2lC6Gy1ErDiDZoGzJ_LSIp-_Z6mQ/exec\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"action\": \"route\",\n    \"task_type\": \"long_form\",\n    \"prompt\": \"Write a [TYPE: report | letter | proposal | thesis section] with clear structure (introduction, body, conclusion). Audience: [AUDIENCE]. Tone: [formal | conversational]. Topic: [TOPIC]\"\n  }'"
+  },
+  {
+    "name": "Gateway → GPT-4o: Quick Script",
+    "keyword": "!gpt-script",
+    "text": "curl -s -X POST \"https://script.google.com/macros/s/AKfycbxC3q2qNHivWzRpvLZdWnH8r5uuDTUTPn-NtPG_3g2lC6Gy1ErDiDZoGzJ_LSIp-_Z6mQ/exec\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"action\": \"route\",\n    \"task_type\": \"quick_script\",\n    \"prompt\": \"Write a [LANGUAGE: GAS | Python | Bash] script that [WHAT IT SHOULD DO]. Output working code only. No explanation unless the logic is non-obvious. Input format: [DESCRIBE INPUT]. Output format: [DESCRIBE OUTPUT]\"\n  }'"
+  },
+  {
+    "name": "Gateway → GPT-4o: Prototype",
+    "keyword": "!gpt-proto",
+    "text": "curl -s -X POST \"https://script.google.com/macros/s/AKfycbxC3q2qNHivWzRpvLZdWnH8r5uuDTUTPn-NtPG_3g2lC6Gy1ErDiDZoGzJ_LSIp-_Z6mQ/exec\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"action\": \"route\",\n    \"task_type\": \"prototype\",\n    \"prompt\": \"Build a minimal working prototype of [WHAT]. Prioritize speed over polish. Use the simplest stack that works. Constraints: [LIST ANY CONSTRAINTS]. Output the full runnable code.\"\n  }'"
+  },
+  {
+    "name": "Gateway → Gemini: Mandarin Translation",
+    "keyword": "!gemini-zh",
+    "text": "curl -s -X POST \"https://script.google.com/macros/s/AKfycbxC3q2qNHivWzRpvLZdWnH8r5uuDTUTPn-NtPG_3g2lC6Gy1ErDiDZoGzJ_LSIp-_Z6mQ/exec\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"action\": \"route\",\n    \"task_type\": \"mandarin\",\n    \"prompt\": \"请将以下内容翻译成[目标语言：中文 | 英文 | 法文]，保持原意、语气和语域。如果有歧义，请提供两个版本并说明差异。\\n\\n原文：\\n[PASTE TEXT HERE]\"\n  }'"
+  },
+  {
+    "name": "Gateway → Gemini: OCR / Text Extraction",
+    "keyword": "!gemini-ocr",
+    "text": "curl -s -X POST \"https://script.google.com/macros/s/AKfycbxC3q2qNHivWzRpvLZdWnH8r5uuDTUTPn-NtPG_3g2lC6Gy1ErDiDZoGzJ_LSIp-_Z6mQ/exec\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"action\": \"route\",\n    \"task_type\": \"ocr\",\n    \"prompt\": \"Extract and clean the text from the following source. Correct obvious OCR errors, preserve paragraph structure, and flag any characters you are uncertain about with [?]. Output clean plain text only.\\n\\nSOURCE:\\n[PASTE RAW OCR TEXT OR DESCRIBE IMAGE CONTENT]\"\n  }'"
+  },
+  {
+    "name": "Gateway → Perplexity: Research",
+    "keyword": "!perp-research",
+    "text": "curl -s -X POST \"https://script.google.com/macros/s/AKfycbxC3q2qNHivWzRpvLZdWnH8r5uuDTUTPn-NtPG_3g2lC6Gy1ErDiDZoGzJ_LSIp-_Z6mQ/exec\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"action\": \"route\",\n    \"task_type\": \"research\",\n    \"prompt\": \"Research the following topic thoroughly. Structure your response as: 1) One-paragraph summary, 2) 5 key facts or findings, 3) Cited sources with URLs. Prioritize peer-reviewed or authoritative sources. Topic: [TOPIC]\"\n  }'"
+  },
+  {
+    "name": "Gateway → Perplexity: Current Events",
+    "keyword": "!perp-news",
+    "text": "curl -s -X POST \"https://script.google.com/macros/s/AKfycbxC3q2qNHivWzRpvLZdWnH8r5uuDTUTPn-NtPG_3g2lC6Gy1ErDiDZoGzJ_LSIp-_Z6mQ/exec\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"action\": \"route\",\n    \"task_type\": \"current_events\",\n    \"prompt\": \"What are the most recent and significant developments on [TOPIC]? Include: dates, key actors, and direct source citations. Limit to events from the past [TIMEFRAME: 7 days | 30 days | 6 months].\"\n  }'"
+  }
+]
