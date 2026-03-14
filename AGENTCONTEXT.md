@@ -33,14 +33,17 @@ Both accounts are the same Gmail — prod and dev are separated by **GAS project
 ## Folder Structure (as of March 2026)
 
 ```
-Proj_AI-Agents/                     ← Git repo root
+nexus-command/                      ← Git repo root (~/Developer.nosync/nexus-command)
 ├── ai-agents.sh                    ← Gateway-OS CLI (auth / agent / deploy)
-├── deploy.sh                       ← Legacy deploy script (kept for reference only)
+├── hazel-ocr-bridge.sh             ← Hazel OCR pipeline bridge script
+├── hazel-trigger.sh                ← Hazel trigger script
 ├── AGENTCONTEXT.md                 ← This file — read first
 ├── CLAUDE.md                       ← Claude-specific loader (references this file)
 ├── AGENTS.md                       ← Multi-agent workflow guide
 ├── README.md                       ← Human-facing project overview
 ├── ROADMAP.md                      ← Version history and next steps
+├── flaim-rules-map.js              ← JS version of V6 FLAIM naming rules
+├── pattern-registry.yaml           ← V6 FLAIM naming rules (source of truth)
 ├── .gitignore                      ← Excludes .env, .clasprc.json
 │
 ├── dev-project/                    ← Development GAS project
@@ -50,8 +53,11 @@ Proj_AI-Agents/                     ← Git repo root
 │   ├── Utilities.gs                ← Shared helpers (checkAccount, logEvent, buildResponse, etc.)
 │   ├── Router.gs                   ← doGet / doPost — routes action field → correct Agent
 │   ├── Code.gs                     ← Inventory management (updateInventory, Drive scanning)
+│   ├── ModelRouterAgent.gs         ← Multi-AI routing agent (Claude/GPT-4o/Gemini/Perplexity)
 │   ├── RelocationTracker.gs        ← SHSID onboarding document tracker (in progress)
 │   └── agents/                     ← Agent files live here (scaffolded by CLI)
+│       ├── LoggerAgent.gs          ← Handles "log" action → writes to ChatLogs tab
+│       └── InventoryAgent.gs       ← Handles "inventory" action
 │
 ├── prod-project/                   ← Production GAS project (live)
 │   ├── .clasp.json                 ← Points to PROD script ID
@@ -59,10 +65,11 @@ Proj_AI-Agents/                     ← Git repo root
 │   ├── Config.gs                   ← Prod constants (ENV="production", SPREADSHEET_ID=prod sheet)
 │   ├── Utilities.gs                ← Shared helpers (same pattern as dev)
 │   ├── Router.gs                   ← Webhook entry point for prod
-│   ├── Code.gs                     ← Inventory management for prod
-│   ├── LoggerAgent.gs              ← Handles "logentry" action → writes to ChatLogs tab
-│   ├── AddTabsOneTime.gs           ← One-time utility to create ChatLogs and ProdLog tabs (run once, then delete)
-│   └── SetScriptProperties.gs     ← One-time utility to set SPREADSHEET_ID Script Property (run once, then delete)
+│   └── Code.gs                     ← Inventory management for prod
+│
+├── templates/                      ← Reusable templates and scaffolds
+│   ├── raycast-snippets.json       ← Raycast snippet import file for all ModelRouterAgent routes
+│   └── SecurityAgent.template.gs  ← Agent scaffold template
 │
 └── scripts/                        ← SHELVED — do not modify or build on these
     ├── standards_embed.py          ← RAG engine (shelved)
@@ -91,23 +98,26 @@ GitHub Secrets (stored in the chebe24/AI-Agents repo):
 ## Architecture — How a Request Flows
 
 ```
-External trigger (iOS Shortcut, n8n, Make, curl)
-        │  POST { "action": "logentry", ... }
+External trigger (iOS Shortcut, n8n, Make, curl, Raycast snippet)
+        │  POST { "action": "...", ... }
         ▼
   Router.gs → doPost()
         │
         ├── Parses JSON payload
         ├── Reads payload.action
         │
-        ├── "logentry"  → LoggerAgent_logEntry(payload)
-        ├── "fileops"   → _Router_handleFileOps(payload)
-        └── (unknown)   → error response
+        ├── "log"       → LoggerAgent_init(payload)       → ChatLogs + ProdLog tabs
+        ├── "fileops"   → _Router_handleFileOps(payload)  → File Ops tab
+        ├── "inventory" → InventoryAgent_init(payload)    → Inventory tab
+        ├── "route"     → routeToModel(payload)           → ModelRouterAgent.gs
+        └── (unknown)   → 400 error response
 
-LoggerAgent_logEntry():
-        ├── Validates required fields (title is required)
-        ├── Validates filename against V6 pattern (if provided)
-        ├── Writes row to ChatLogs tab
-        └── Writes execution record to ProdLog tab
+ModelRouterAgent.routeToModel():
+        ├── Reads task_type from payload
+        ├── "complex_code" | "architecture" | "debugging" | "writing" → _callClaude()
+        ├── "quick_script" | "prototype" | "web_task" | "multimedia"  → _callChatGPT()
+        ├── "mandarin" | "ocr" | "translation" | "chinese"            → _callGemini()
+        └── "research" | "current_events" | "sourced"                 → _callPerplexity()
 ```
 
 Every Agent returns a plain object `{ code, message, data, env }`.
@@ -179,19 +189,23 @@ A failed validation sets the ChatLogs Status to `"Naming Error"` and logs a WARN
 These are stored in Apps Script → Project Settings → Script Properties.
 **Never hardcode these values in code files.**
 
-| Property       | Value / Purpose |
-|----------------|-----------------|
-| `SPREADSHEET_ID` | The Google Sheet ID for the current environment |
+| Property            | Environment | Purpose |
+|---------------------|-------------|---------|
+| `SPREADSHEET_ID`    | Dev + Prod  | Google Sheet ID for the current environment |
+| `ANTHROPIC_API_KEY` | Dev         | Claude (Sonnet 4.6) via Anthropic REST API |
+| `GEMINI_API_KEY`    | Dev         | Gemini 1.5 Flash via Google Generative Language API |
+| `OPENAI_API_KEY`    | Dev         | GPT-4o via OpenAI chat completions API |
+| `PERPLEXITY_API_KEY`| Dev         | Perplexity sonar model via chat completions API |
 
-To set these, run `setProductionScriptProperties()` from `SetScriptProperties.gs`, then delete that file.
-To view all current properties, run `viewAllScriptProperties()`.
+All 4 AI API keys are active in the Dev Script Properties as of March 13, 2026.
+Prod does not yet have AI API keys — ModelRouterAgent is dev-only until prod promotion.
 
 ---
 
 ## CLI Quick Reference
 
 ```bash
-cd ~/Documents/02_Projects/Proj_AI-Agents
+cd ~/Developer.nosync/nexus-command
 
 ./ai-agents.sh auth dev            # Verify dev token, auto-rotate GitHub Secret if expired
 ./ai-agents.sh auth prod           # Same for prod
@@ -208,15 +222,19 @@ cd ~/Documents/02_Projects/Proj_AI-Agents
 - Dev/prod GAS projects deployed and tested
 - Gateway-OS Router pattern live in both environments
 - `ai-agents.sh` CLI: `auth`, `agent`, `deploy` commands working
-- `logentry` webhook route live — LoggerAgent writing to ChatLogs and ProdLog tabs
+- `log` webhook route — LoggerAgent writing to ChatLogs and ProdLog tabs
 - `fileops` webhook route working
-- `updateInventory()` Drive scan function
+- `inventory` webhook route — InventoryAgent + updateInventory() Drive scan
 - ChatLogs and ProdLog tabs created in prod sheet
 - Script Properties set for prod
+- Dev modular refactor — `agents/` subfolder with LoggerAgent + InventoryAgent
+- **ModelRouterAgent.gs** — All 4 AI routes active in Dev (Claude, GPT-4o, Gemini, Perplexity)
+- All AI API keys stored in Dev Script Properties (March 13, 2026)
+- Raycast snippets for all 8 ModelRouterAgent use cases (`templates/raycast-snippets.json`)
 
 ### 🔧 In Progress
-- **Phase 2** — Dev modular refactor (agents/ subfolder, LoggerAgent dev version)
 - **RelocationTracker.gs** — SHSID onboarding document tracker
+- **ModelRouterAgent → Prod** — Not yet promoted to prod-project/
 
 ### 🚫 Shelved
 - **RAG Engine** — Python / Chroma vector DB / trilingual standards embedding (not a priority)
