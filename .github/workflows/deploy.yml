@@ -1,0 +1,73 @@
+# =============================================================================
+# deploy.yml — Gateway-OS Auto-Deploy
+# Triggers on push to main.
+#   - DEV:  auto-deploys every push
+#   - PROD: requires manual approval via GitHub Environment protection rules
+#
+# Required GitHub Secrets:
+#   CLASDEV_JSON  — clasp OAuth token for dev (cary.hebert@gmail.com)
+#   CLASPRC       — clasp OAuth token for prod (cary.hebert@gmail.com)
+# =============================================================================
+
+name: Deploy to Google Apps Script
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:        # allow manual trigger from GitHub UI
+
+jobs:
+
+  # ---------------------------------------------------------------------------
+  # DEV — runs automatically on every push to main
+  # ---------------------------------------------------------------------------
+  deploy-dev:
+    name: Deploy DEV
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install clasp
+        run: npm install -g @google/clasp
+
+      - name: Authenticate (dev)
+        run: echo '${{ secrets.CLASDEV_JSON }}' > ~/.clasprc.json
+
+      - name: Push dev-project
+        run: cd dev-project && clasp push --force
+
+  # ---------------------------------------------------------------------------
+  # PROD — requires manual approval
+  # Set up a GitHub Environment named "production" with a required reviewer
+  # at: repo Settings → Environments → production → Required reviewers
+  # ---------------------------------------------------------------------------
+  deploy-prod:
+    name: Deploy PROD
+    runs-on: ubuntu-latest
+    needs: deploy-dev
+    environment: production      # ← protection rules enforced here
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install clasp
+        run: npm install -g @google/clasp
+
+      - name: Authenticate (prod)
+        run: echo '${{ secrets.CLASPRC }}' > ~/.clasprc.json
+
+      - name: Push prod-project
+        run: cd prod-project && clasp push --force

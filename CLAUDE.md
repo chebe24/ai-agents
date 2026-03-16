@@ -160,6 +160,44 @@ cd ~/Developer.nosync/21_systems/nexus-command
 
 ---
 
+## Git & GitHub Workflow (AI-Executable)
+
+### Standard commit flow
+```bash
+git status                        # review what changed
+git add <specific files>          # never use git add -A or git add .
+git commit -m "type: message"     # conventional commit format (see below)
+git push                          # push to origin/main
+```
+
+### Conventional commit format
+| Type | When to use |
+|------|-------------|
+| `feat:` | new agent, new route, new capability |
+| `fix:` | bug fix in existing code |
+| `chore:` | maintenance, dependency updates, renames |
+| `docs:` | CLAUDE.md, README, comments only |
+| `security:` | credential removal, gitignore fixes, access changes |
+| `refactor:` | restructure without behavior change |
+
+### CI/CD pipeline — `.github/workflows/deploy.yml`
+- **DEV auto-deploys** on every push to `main` using `CLASDEV_JSON` secret
+- **PROD requires manual approval** via GitHub Environment protection (`production` environment)
+- To approve a prod deploy: go to the GitHub Actions run → Review deployments → Approve
+
+### One-time GitHub setup required for prod protection
+1. Repo **Settings → Environments → New environment** → name it `production`
+2. Enable **Required reviewers** → add yourself
+3. Save — prod will now pause and wait for your approval on every push
+
+### Verify a deploy succeeded
+```bash
+git log --oneline -5              # confirm commit is on main
+```
+Then check the GitHub Actions tab for green checkmarks on both jobs.
+
+---
+
 ## Webhook POST Workflow (AI-Executable)
 
 > Credentials are in `.env.local` (gitignored). Load them before running any curl command.
