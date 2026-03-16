@@ -89,7 +89,7 @@ nexus-command/                      ← Git repo root (~/Developer.nosync/nexus-
 | Dev  | `1o_3FUWvqXzFYeJOParcxBYcAacZy5Ig3MbgbTAX5TCixKrrchW7IBOBW` | https://script.google.com/macros/s/AKfycbxC3q2qNHivWzRpvLZdWnH8r5uuDTUTPn-NtPG_3g2lC6Gy1ErDiDZoGzJ_LSIp-_Z6mQ/exec |
 | Prod | `1Znk2rEPszw359bPAaxzVORGSOTby1vFNYp2oMR2N93lMb6Vo_gd9auib` | Run `./ai-agents.sh deploy prod` to get the current URL |
 
-GitHub Secrets (stored in the chebe24/AI-Agents repo):
+GitHub Secrets (stored in the chebe24/nexus-command repo):
 - `CLASDEV_JSON` — clasp OAuth token for dev
 - `CLASPRC` — clasp OAuth token for prod
 
@@ -251,7 +251,7 @@ All active projects live in `~/Developer.nosync/`. Each is a standalone git repo
 
 | Folder | GitHub Repo | Type | Status |
 |--------|-------------|------|--------|
-| `nexus-command/` | chebe24/AI-Agents | Gateway-OS (GAS + CLI) | Active |
+| `nexus-command/` | chebe24/nexus-command | Gateway-OS (GAS + CLI) | Active |
 | `PDFAnnotatorAgent/` | chebe24/pdf-annotator-agent | OCR pipeline (GAS + JS) | Active |
 | `eureka-ocr-automation/` | chebe24/eureka-ocr-automation | Hazel/Docker OCR | Active |
 | `resume-tools/` | chebe24/resume-tools | Resume/cover letter GAS | Maintained |

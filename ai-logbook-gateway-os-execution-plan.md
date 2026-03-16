@@ -1,6 +1,6 @@
 # AI Logbook — Gateway-OS Execution Plan
 **Project:** AI-Logbook (Migration Spoke)
-**Repo:** Proj_AI-Agents -> chebe24/AI-Agents
+**Repo:** Proj_AI-Agents -> chebe24/nexus-command
 **Account:** Work - chebert4@ebrschools.org
 **Date:** 2026-03-01
 **Goal:** Establish the Command Hub connection, deploy LoggerAgent, and enforce V6 naming standards.
@@ -54,7 +54,7 @@ Content must include:
     transnomio_preset: V6-Standard-Rename
 - storage_policy:
     work: chebert4@ebrschools.org Google Drive
-    code: GitHub chebe24/AI-Agents
+    code: GitHub chebe24/nexus-command
 Do not use personal Gmail. Save and confirm.
 
 ---
@@ -186,6 +186,6 @@ Report pass or fail for each step.
 ## ACCOUNT AND STORAGE REFERENCE
 Command Hub Sheet      | Google Drive | chebert4@ebrschools.org
 Agents-Production-Log  | Google Drive | chebert4@ebrschools.org
-Scripts and YAML       | GitHub       | chebe24/AI-Agents
+Scripts and YAML       | GitHub       | chebe24/nexus-command
 Local Repo             | iMac         | ~/Documents/02_Projects/Proj_AI-Agents
 Personal curriculum    | Google Drive | cary.hebert@gmail.com

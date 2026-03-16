@@ -66,7 +66,7 @@ PatternRegistryAgent_sync()
 
 **GITHUB_REGISTRY_URL Example:**
 ```
-https://raw.githubusercontent.com/chebe24/AI-Agents/main/pattern-registry.yaml
+https://raw.githubusercontent.com/chebe24/nexus-command/main/pattern-registry.yaml
 ```
 
 ---

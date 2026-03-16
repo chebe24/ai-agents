@@ -18,7 +18,7 @@ to Google Sheets. Two fully separate GAS projects keep development and productio
 ## Project Structure
 
 ```
-AI-Agents/
+nexus-command/
 ├── ai-agents.sh            ← Gateway-OS CLI (auth / agent / deploy)
 ├── CLAUDE.md               ← AI assistant context file (read this first)
 ├── AGENTS.md               ← Multi-agent workflow guide

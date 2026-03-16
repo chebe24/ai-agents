@@ -40,7 +40,7 @@ that can be added, removed, or swapped without touching anything else.
 - **Google Apps Script** — the scripting language (similar to JavaScript, runs in Google's cloud)
 - **Google Sheets** — the database / dashboard
 - **Webhooks** — the communication method (like a doorbell: external tool rings, system answers)
-- **GitHub** — where all code is stored and versioned (chebe24/AI-Agents)
+- **GitHub** — where all code is stored and versioned (chebe24/nexus-command)
 - **clasp** — the command-line tool that pushes code from local machine to Google Apps Script
 
 ---

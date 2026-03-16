@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # =============================================================================
 # ai-agents.sh — Gateway-OS Deployment CLI
-# Project : Gateway-OS / AI-Agents
+# Project : Gateway-OS / nexus-command
 # Author  : Cary Hebert
 # Updated : 2026-03
 #

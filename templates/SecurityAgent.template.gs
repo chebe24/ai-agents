@@ -572,7 +572,7 @@ function SecurityAgent_runAllTests() {
  * ═══════════════════════════════════════════════════════════════════════════
  *
  * For detailed documentation, see:
- * https://github.com/chebe24/AI-Agents/blob/main/SECURITY.md
+ * https://github.com/chebe24/nexus-command/blob/main/SECURITY.md
  *
  * ═══════════════════════════════════════════════════════════════════════════
  */

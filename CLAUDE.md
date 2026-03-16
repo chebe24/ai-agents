@@ -31,7 +31,7 @@ There are two fully separate GAS projects:
 ## Actual Folder Structure (as of March 2026)
 
 ```
-AI-Agents/                          ← Git repo root
+nexus-command/                      ← Git repo root
 ├── ai-agents.sh                    ← Gateway-OS CLI (auth / agent / deploy)
 ├── deploy.sh                       ← Legacy deploy script (kept for reference)
 ├── CLAUDE.md                       ← This file

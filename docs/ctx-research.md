@@ -12,7 +12,7 @@ self-contained Agent scripts that log results to Google Sheets.
 - No-code / low-code preferred — I'm not a professional developer
 - Free tools only — Google Workspace ecosystem (GAS, Sheets, Drive)
 - Modular architecture — new capabilities are added as independent Agent blocks
-- All code lives in GitHub (chebe24/AI-Agents), deployed via clasp CLI
+- All code lives in GitHub (chebe24/nexus-command), deployed via clasp CLI
 - Running on Google Apps Script V8 runtime
 
 **Current agents:** LoggerAgent (conversation logging), InventoryAgent (Drive scanning),

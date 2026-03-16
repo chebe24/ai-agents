@@ -1,6 +1,6 @@
 # Project Sentinel Security - Gateway-OS
 
-**Project:** Gateway-OS (AI-Agents)
+**Project:** Gateway-OS (nexus-command)
 **Date:** 2026-03-07
 **Security Level:** PRODUCTION | Project Sentinel Compliant
 **Environment:** Production (cary.hebert@gmail.com)
@@ -151,7 +151,7 @@ Your Google account email (e.g., `cary.hebert@gmail.com`)
 Either `production` or `development`
 
 **GITHUB_REGISTRY_URL:**
-`https://raw.githubusercontent.com/chebe24/AI-Agents/main/pattern-registry.yaml`
+`https://raw.githubusercontent.com/chebe24/nexus-command/main/pattern-registry.yaml`
 
 ---
 

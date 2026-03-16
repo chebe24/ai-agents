@@ -1,4 +1,4 @@
-# AI-Agents / Gateway-OS Roadmap
+# nexus-command / Gateway-OS Roadmap
 
 ## Current Status: v1.3 In Progress 🔧
 

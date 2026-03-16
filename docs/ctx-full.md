@@ -37,7 +37,7 @@ GAS Script IDs:
 ## Repo Structure
 
 ```
-AI-Agents/                        ← GitHub repo (chebe24/AI-Agents)
+AI-Agents/                        ← GitHub repo (chebe24/nexus-command)
 ├── dev-project/                  ← Dev GAS project
 │   ├── Config.gs                 ← Constants (ENV, ACCOUNT, SPREADSHEET_ID)
 │   ├── Utilities.gs              ← Shared helpers (checkAccount, logEvent, buildResponse, getOrCreateSheet)

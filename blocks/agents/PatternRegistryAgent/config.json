@@ -23,7 +23,7 @@
         "name": "GITHUB_REGISTRY_URL",
         "type": "string",
         "description": "GitHub raw URL for pattern-registry.yaml",
-        "example": "https://raw.githubusercontent.com/chebe24/AI-Agents/main/pattern-registry.yaml"
+        "example": "https://raw.githubusercontent.com/chebe24/nexus-command/main/pattern-registry.yaml"
       },
       {
         "name": "SPREADSHEET_ID",

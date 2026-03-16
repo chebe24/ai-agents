@@ -1,5 +1,5 @@
 /**
- * AI-Agents Database Update Script
+ * nexus-command Database Update Script
  * Scans Drive folder, updates inventory sheet, flags deprecated items
  */
 
