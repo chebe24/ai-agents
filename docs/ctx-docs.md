@@ -1,5 +1,6 @@
 # ctx-docs.md — Medium Context for Gemini / ChatGPT (PRDs, MVPs, Documentation)
 # Copy everything below this line and paste as your opening message.
+# Last updated: 2026-03-16
 # ─────────────────────────────────────────────────────────────────
 
 ## Project Context: Gateway-OS
@@ -19,44 +20,59 @@ A personal automation system built on Google Apps Script. It works like a switch
 - The system routes each request to the right "Agent" — a small, focused script
 - Every action is logged to a Google Sheet dashboard
 
-Think of it as a modular command center where each Agent is a self-contained block
+Think of it as a modular command center: each Agent is a self-contained block
 that can be added, removed, or swapped without touching anything else.
 
 ---
 
 ## Current Agents (Modules)
 
-| Agent | What It Does |
-|-------|-------------|
-| LoggerAgent | Records AI conversations (platform, title, summary, URL) to a tracking sheet |
-| InventoryAgent | Scans a Google Drive folder and catalogs automation files |
-| FileOps | Validates file names against a naming convention |
-| PatternRegistryAgent | Keeps the naming rules up to date from GitHub |
+| Agent | Action key | What It Does |
+|-------|------------|-------------|
+| LoggerAgent | `log` | Records structured events to the System Log sheet tab |
+| InventoryAgent | `inventory` | Scans a Google Drive folder and catalogs automation files |
+| FileOps | `fileops` | Validates file names against the V6 naming convention |
+| ModelRouterAgent | `route` | Routes tasks to Claude, GPT-4o, Gemini, or Perplexity based on task type |
+
+---
+
+## AI Model Routing (ModelRouterAgent)
+
+The system intelligently assigns tasks to the right AI model:
+
+| Task Type | Model | Reason |
+|-----------|-------|--------|
+| Complex code, architecture, debugging, writing | **Claude** | Best multi-step reasoning and code quality |
+| Quick scripts, prototypes, web tasks | **ChatGPT (GPT-4o)** | Fast, capable generalist |
+| Mandarin, OCR, translation, Chinese content | **Gemini** | Native Google integration + multilingual |
+| Research, current events, cited answers | **Perplexity** | Web-grounded with citations |
 
 ---
 
 ## Technology Stack (plain language)
 
-- **Google Apps Script** — the scripting language (similar to JavaScript, runs in Google's cloud)
-- **Google Sheets** — the database / dashboard
-- **Webhooks** — the communication method (like a doorbell: external tool rings, system answers)
-- **GitHub** — where all code is stored and versioned (chebe24/nexus-command)
-- **clasp** — the command-line tool that pushes code from local machine to Google Apps Script
+- **Google Apps Script** — scripting language (like JavaScript, runs in Google's cloud for free)
+- **Google Sheets** — the dashboard and database
+- **Webhooks** — communication method (external tool sends a message; system responds)
+- **GitHub** — where all code is stored (`chebe24/nexus-command`)
+- **clasp** — command-line tool that pushes code from local machine to Google Apps Script
+- **GitHub Actions** — CI/CD pipeline: dev deploys automatically; prod requires manual approval
 
 ---
 
 ## Design Principles
 
-- **Modular** — each Agent is independent; plug in or remove without breaking others
-- **No hardcoded secrets** — all sensitive IDs stored in a secure vault (Script Properties)
+- **Modular** — each Agent is independent; add or remove without breaking others
+- **No hardcoded secrets** — all sensitive IDs in `.env.local` (local) or Script Properties (GAS)
 - **Logged** — every action writes to a Google Sheet for audit and review
 - **Plain** — no infrastructure more complex than Google's free tools
+- **AI-routed** — tasks are assigned to the best model for the job, not one-size-fits-all
 
 ---
 
 ## Naming Convention (V6)
 
-All files follow this pattern: `NN-YYYY-MM-DD_Component_FileType_Title.ext`
+All files follow: `NN-YYYY-MM-DD_Component_FileType_Title.ext`
 Example: `02-2026-03-01_Gateway_YAML_PatternRegistryV6.md`
 
 ---
@@ -69,3 +85,7 @@ When writing PRDs, MVPs, or documentation for this project:
 - Each new Agent or feature should be described as a self-contained module
 - Flag any dependencies on existing agents clearly
 - Do not suggest adding external services, databases, or paid tools unless asked
+- Reference the correct model for implementation tasks:
+  - Code → Claude
+  - Research → Perplexity
+  - Docs/PRDs → you (Gemini or ChatGPT)
