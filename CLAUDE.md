@@ -160,6 +160,51 @@ cd ~/Developer.nosync/21_systems/nexus-command
 
 ---
 
+## Webhook POST Workflow (AI-Executable)
+
+> Credentials are in `.env.local` (gitignored). Load them before running any curl command.
+
+### Why two steps?
+GAS web apps always return a 302 redirect. `curl -L` silently converts POST→GET after the redirect, which breaks the call. The correct pattern is: POST → capture redirect URL → GET the redirect.
+
+### Pattern (copy-paste ready)
+```bash
+# 1. Load credentials
+source /Users/caryhebert/Developer.nosync/21_systems/nexus-command/.env.local
+
+# 2. POST and capture redirect
+REDIRECT=$(curl -s -o /dev/null -w "%{redirect_url}" -X POST \
+  "$DEV_WEBHOOK_URL" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "action": "log",
+    "eventType": "PROJECT_STATUS",
+    "message": "your message here",
+    "level": "INFO",
+    "data": { "source": "manual" }
+  }')
+
+# 3. GET the response
+curl -s "$REDIRECT"
+```
+
+### LoggerAgent payload shape
+| Field | Required | Values |
+|-------|----------|--------|
+| `action` | yes | `"log"` |
+| `eventType` | yes | any string e.g. `"PROJECT_STATUS"` |
+| `message` | yes | free text |
+| `level` | no | `"INFO"` \| `"WARN"` \| `"ERROR"` (default: INFO) |
+| `data` | no | any JSON object |
+
+Logs appear in the **System Log** tab of the shared spreadsheet (see `PROD_SPREADSHEET_ID` in `.env.local`).
+
+### After pushing code changes via clasp
+The live web app does NOT auto-update. You must redeploy in the GAS editor:
+**Deploy → Manage deployments → Edit → New version → Deploy**
+
+---
+
 ## Future Addition: Trilingual RAG Engine
 
 > **Status: Not started. Do not implement unless Cary explicitly asks.**
