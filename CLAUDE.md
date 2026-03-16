@@ -3,6 +3,15 @@
 > This file exists so Claude (and Claude Code / Cowork) auto-loads project context.
 > **All actual project information lives in AGENTCONTEXT.md — read that file first and in full.**
 
+## Reference Docs (AI-loadable)
+
+| File | When to read |
+|------|-------------|
+| `docs/security-guide.md` | Before handling any credentials, secrets, or API keys |
+| `docs/ssh-troubleshooting.md` | When `git push` or clasp auth fails with SSH errors |
+| `.github/ISSUE_TEMPLATE.md` | When filing or triaging a bug report or feature request |
+| `.github/workflows/deploy.yml` | When modifying the CI/CD pipeline |
+
 ---
 
 ## Who Built This
