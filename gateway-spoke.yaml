@@ -13,7 +13,7 @@ governance:
 storage_policy:
   work: "cary.hebert@gmail.com Google Drive"
   code: "GitHub chebe24/nexus-command"
-  local: "~/Developer.nosync/nexus-command"
+  local: "~/Developer.nosync/21_systems/nexus-command"
 
 automation_hooks:
   hazel_trigger: "Detect V6 pattern mismatch in data/raw"

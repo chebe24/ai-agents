@@ -2,7 +2,7 @@
 # ============================================================
 # check-git-in-documents.sh
 # Detects .git directories inside ~/Documents
-# Run via: zsh ~/Developer.nosync/nexus-command/scripts/check-git-in-documents.sh
+# Run via: zsh ~/Developer.nosync/21_systems/nexus-command/scripts/check-git-in-documents.sh
 # Or scheduled via LaunchAgent: com.chebe24.gitcheck.plist
 # ============================================================
 

@@ -33,7 +33,7 @@ Both accounts are the same Gmail — prod and dev are separated by **GAS project
 ## Folder Structure (as of March 2026)
 
 ```
-nexus-command/                      ← Git repo root (~/Developer.nosync/nexus-command)
+nexus-command/                      ← Git repo root (~/Developer.nosync/21_systems/nexus-command)
 ├── ai-agents.sh                    ← Gateway-OS CLI (auth / agent / deploy)
 ├── hazel-ocr-bridge.sh             ← Hazel OCR pipeline bridge script
 ├── hazel-trigger.sh                ← Hazel trigger script
@@ -205,7 +205,7 @@ Prod does not yet have AI API keys — ModelRouterAgent is dev-only until prod p
 ## CLI Quick Reference
 
 ```bash
-cd ~/Developer.nosync/nexus-command
+cd ~/Developer.nosync/21_systems/nexus-command
 
 ./ai-agents.sh auth dev            # Verify dev token, auto-rotate GitHub Secret if expired
 ./ai-agents.sh auth prod           # Same for prod

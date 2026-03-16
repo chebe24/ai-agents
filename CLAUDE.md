@@ -146,7 +146,7 @@ Every Agent returns `buildResponse(code, message, data?)` — a standard JSON en
 ## CLI Quick Reference
 
 ```bash
-cd ~/Developer.nosync/nexus-command
+cd ~/Developer.nosync/21_systems/nexus-command
 
 ./ai-agents.sh auth dev            # Verify dev token, auto-rotate GitHub Secret if expired
 ./ai-agents.sh auth prod           # Same for prod
