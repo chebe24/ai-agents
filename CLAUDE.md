@@ -78,8 +78,8 @@ AI-Agents/                          ← Git repo root
 
 | Env  | GAS Script ID | Web App URL |
 |------|---------------|-------------|
-| Dev  | `1o_3FUWvqXzFYeJOParcxBYcAacZy5Ig3MbgbTAX5TCixKrrchW7IBOBW` | https://script.google.com/macros/s/AKfycbxC3q2qNHivWzRpvLZdWnH8r5uuDTUTPn-NtPG_3g2lC6Gy1ErDiDZoGzJ_LSIp-_Z6mQ/exec |
-| Prod | `1Znk2rEPszw359bPAaxzVORGSOTby1vFNYp2oMR2N93lMb6Vo_gd9auib` | (deploy to get new URL — run ./ai-agents.sh deploy prod) |
+| Dev  | `1o_3FUWvqXzFYeJOParcxBYcAacZy5Ig3MbgbTAX5TCixKrrchW7IBOBW` | https://script.google.com/macros/s/AKfycbxQiZQIiltlYtmomigjNsmSVC4z-WRoSFIHFrSjMEZ85t-ReCSuN4D-u0WxDJ--obon/exec |
+| Prod | `1Znk2rEPszw359bPAaxzVORGSOTby1vFNYp2oMR2N93lMb6Vo_gd9auib` | https://script.google.com/macros/s/AKfycbxaaDHgJf3xBE8KZJBlpVSE2LSkaIZdLLeaBhx6z6y4uAq4fa0UiM3QI7oJ_WO8A91Ibg/exec |
 
 GitHub Secrets:
 - `CLASDEV_JSON` — clasp OAuth token for dev account

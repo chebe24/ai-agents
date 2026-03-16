@@ -53,6 +53,9 @@
 # Clasp project files (selective — only named files, not all .json)
 !dev-project/.clasp.json
 !prod-project/.clasp.json
+!compositions/gateway-os-dev/.clasp.json
+!compositions/gateway-os-prod/.clasp.json
+!compositions/nexus-ai-inventory/.clasp.json
 
 
 # ====================
@@ -199,17 +202,6 @@ deprecated/**/*
 #   git status
 #   git check-ignore -v <filename>
 # ============================================================================
-LoggerAgent/venv/
-02_Projects/
-LoggerAgent/
-##-*
-LoggerAgent/venv/
-02_Projects/
-LoggerAgent/
-##-*
-logger-agent/data/
-logger-agent/logs/
-logger-agent/venv/
 logger-agent/data/
 logger-agent/logs/
 logger-agent/venv/
