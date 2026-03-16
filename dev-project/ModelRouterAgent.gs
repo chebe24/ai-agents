@@ -168,7 +168,7 @@ function _callPerplexity(prompt, context) {
   if (!apiKey) return buildResponse(500, 'Missing Script Property: PERPLEXITY_API_KEY — key not yet obtained');
 
   const body = {
-    model: 'llama-3.1-sonar-small-128k-online',
+    model: 'sonar',
     messages: [
       { role: 'system', content: 'Be precise and cite sources.' },
       { role: 'user',   content: context ? `Context:\n${context}\n\nResearch:\n${prompt}` : prompt }
