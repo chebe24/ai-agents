@@ -1,0 +1,47 @@
+#!/bin/bash
+# =============================================================================
+# pre-commit hook — Memory Update Reminder
+# Checks if infrastructure files changed and reminds to update memory files.
+# Non-blocking: prints warnings but never prevents the commit.
+# =============================================================================
+
+MEMORY_DIR="$HOME/.claude/projects/-Users-caryhebert-Developer-nosync-21-systems-nexus-command/memory"
+WARNED=0
+
+warn() {
+  if [ $WARNED -eq 0 ]; then
+    echo ""
+    echo "╔══════════════════════════════════════════════════════════════╗"
+    echo "║           ⚠️  MEMORY UPDATE REMINDER                        ║"
+    echo "╚══════════════════════════════════════════════════════════════╝"
+    WARNED=1
+  fi
+  echo "$1"
+}
+
+# Check staged files
+STAGED=$(git diff --cached --name-only)
+
+# Trigger: GAS script ID or webhook URL changed
+if echo "$STAGED" | grep -qE "dev-project/.clasp.json|prod-project/.clasp.json"; then
+  warn "  → .clasp.json changed — update memory: project_env_local.md"
+fi
+
+# Trigger: Spreadsheet ID or env changed
+if echo "$STAGED" | grep -qE "dev-project/Config.gs|prod-project/Config.gs"; then
+  warn "  → Config.gs changed — update memory: project_sheet_state.md"
+fi
+
+# Trigger: Repo structure docs changed
+if echo "$STAGED" | grep -qE "CLAUDE.md|AGENTCONTEXT.md"; then
+  warn "  → Docs changed — verify memory files are still accurate"
+fi
+
+if [ $WARNED -eq 1 ]; then
+  echo ""
+  echo "  Memory path: $MEMORY_DIR"
+  echo "  Commit proceeds — update memory files when done."
+  echo ""
+fi
+
+exit 0

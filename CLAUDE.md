@@ -155,6 +155,20 @@ Every Agent returns `buildResponse(code, message, data?)` — a standard JSON en
 9. **Code lives in GitHub only** — never save code files to local folders or Google Drive. All `.gs`, `.sh`, `.py`, `.js`, and config files belong in the GitHub repo and nowhere else.
 ---
 
+## First-Time Setup (after fresh clone)
+
+```bash
+cd ~/Developer.nosync/21_systems/nexus-command
+
+# Activate git hooks (one-time per machine)
+git config core.hooksPath .githooks
+
+# Copy credentials (not in repo — must be created manually)
+# See .env.local format in project_env_local.md memory file
+```
+
+---
+
 ## CLI Quick Reference
 
 ```bash
