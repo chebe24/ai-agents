@@ -296,3 +296,10 @@ Located in `docs/` — copy the right one and paste it as the first message.
 A planned semantic search engine over educational standards in English, French, and Mandarin.
 Source files exist in `scripts/` but are disconnected from Gateway-OS.
 Will use Google's free embedding API and a local `.env` file (never committed to Git).
+
+## File Path Gotchas (added Mar 17 2026)
+- Script filename uses HYPHENS: hazel-ocr-bridge.sh (not underscores)
+- Full path: ~/Developer.nosync/21_systems/nexus-command/hazel-ocr-bridge.sh
+- CREDENTIALS.local lives at: ~/Developer.nosync/CREDENTIALS.local
+- MCP filesystem tools CANNOT reach ~/Developer.nosync — always use Terminal commands for edits here
+- sed -i in-place editing fails on iCloud placeholder files — use Python3 replace pattern instead
