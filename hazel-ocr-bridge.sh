@@ -9,7 +9,7 @@
 # ============================================================
 
 # --- CONFIGURATION ---
-WEBAPP_URL="https://script.google.com/macros/s/AKfycbw1OZlm4p-aXVd5eOrgwhVcL4WDtXwMGwVgOhWTeBXyoB4iRyf3SZ-SrdDN6-DCZ46VPA/exec"
+WEBAPP_URL="https://script.google.com/macros/s/AKfycbxAluWilnJHGljMQAW4gpSsPC6Tci1YxWsy_btxn-ORMJbq8axEMr43tlV4rpnjBwhrjg/exec"
 OCR_LANGS="eng+chi_sim"
 
 # --- GOOGLE DRIVE MOUNT ROOTS ---
