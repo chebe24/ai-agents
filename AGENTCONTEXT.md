@@ -303,3 +303,5 @@ Will use Google's free embedding API and a local `.env` file (never committed to
 - CREDENTIALS.local lives at: ~/Developer.nosync/CREDENTIALS.local
 - MCP filesystem tools CANNOT reach ~/Developer.nosync — always use Terminal commands for edits here
 - sed -i in-place editing fails on iCloud placeholder files — use Python3 replace pattern instead
+
+- ORIENTATION.md — new session checklist: credentials, MCP servers, CLASP, ProdLog, file path gotchas
