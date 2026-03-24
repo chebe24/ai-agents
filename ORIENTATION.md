@@ -42,36 +42,9 @@ Inject context at the start of every session in this order:
 | `CLAUDE.md` | Repo root | Claude Code project instructions |
 | `.gitignore` | Repo root | Confirms CREDENTIALS.local + *.icloud excluded |
 
-### Apps Script IDs
-
-| Environment | Script ID |
-|---|---|
-| PROD | `1okfeLoXEpiq81Qdctv5Irph4oSO67VzhOtGTqJQGcd8gzkGhsSNUlT5G` |
-| DEV (gmail) | `1o_3FUWvq...W7IBOBW` |
-| DEV (ebr) | `1B91NVhY...iup0lu` |
-
-### Webapp Deployment URL
-- **Current key:** `AKfycbxAluWilnJHGljMQAW4gpSsPC6Tci1YxWsy_btxn-ORMJbq8axEMr43tlV4rpnjBwhrjg`
-- **Full URL:** `https://script.google.com/macros/s/[KEY]/exec`
-
-### Google Sheets IDs
-
-| Sheet | ID | Notes |
-|---|---|---|
-| PROD Command Hub | `1kWtc6Z_kdgCEMCkYyLd9U300MGxdZLr0NzNSESIUsUE` | Personal Drive |
-| DEV Sheet | `1KVHxSLUSk1LpySX2K1ITRXqxJKV4h-dpnd_Ia4lV6_E` | EBR — MCP inaccessible |
-| OCR ProdLog | `1qEZUBf4A1djNF5CstRxJa2UQbQqCnIZqavSF8mkKUpU` | Capital I not lowercase l |
-
-### GitHub Secrets
-
-| Secret | Maps To |
-|---|---|
-| `CLASDEV` | DEV `.clasp.json` |
-| `CLASPRC` | PROD `.clasp.json` |
-
-### Gemini API
-- **GCP Project:** `gen-lang-client-0057364764`
-- **Key location:** GAS Script Properties — never in code
+> For Script IDs, Webapp URLs, Sheet IDs, and GitHub Secrets —
+> read **AGENTCONTEXT.md** (Script IDs & Web App URLs section).
+> That file is the single source of truth. Do not duplicate values here.
 
 ---
 
@@ -203,15 +176,4 @@ cat .clasp.json   # confirm which project you are linked to
 ```
 
 **GitHub remote:** `github.com/chebe24/nexus-command.git`
-**Always use:** `/usr/bin/git` | `cd` to repo first | Python3 for file edits/usr/bin/git add ORIENTATION.md && /usr/bin/git commit -m "docs: add ORIENTATION.md for new session context injection" && /usr/bin/git push
-```
-
----
-
-### Step 5: Register It in AGENTCONTEXT.md
-
-**Why:** `AGENTCONTEXT.md` is the master index. Any AI reading it should know `ORIENTATION.md` exists and what it's for. This is the same reason a README links to CONTRIBUTING — discoverability.
-
-Add one line to the relevant section of `AGENTCONTEXT.md`:
-```
-- ORIENTATION.md — new session checklist: credentials, MCP servers, CLASP, ProdLog, file path gotchas
+**Always use:** `/usr/bin/git` | `cd` to repo first | Python3 for file edits
