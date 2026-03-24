@@ -79,4 +79,4 @@ jobs:
         run: cd prod-project && clasp push --force
 
       - name: Deploy prod-project (update live web app version)
-        run: cd prod-project && clasp deploy --deploymentId AKfycbxaaDHgJf3xBE8KZJBlpVSE2LSkaIZdLLeaBhx6z6y4uAq4fa0UiM3QI7oJ_WO8A91Ibg -d "Auto-deploy $(date +%Y-%m-%d)"
+        run: cd prod-project && clasp deploy --deploymentId AKfycbxAluWilnJHGljMQAW4gpSsPC6Tci1YxWsy_btxn-ORMJbq8axEMr43tlV4rpnjBwhrjg -d "Auto-deploy $(date +%Y-%m-%d)"
