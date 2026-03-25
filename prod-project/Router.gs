@@ -33,19 +33,12 @@ function doGet(e) {
  */
 function doPost(e) {
   try {
-    // 🔒 SECURITY CHECKPOINT - Verify authorized user
-    SecurityAgent_checkAuthorization();
-
-    logEvent('WEBHOOK_RECEIVED', {
-      timestamp:   new Date().toISOString(),
-      contentType: e?.contentType || 'unknown',
-      hasBody:     e?.postData ? true : false
-    });
-
+    // ── 1. Guard: require a request body ──────────────────────────────────
     if (!e?.postData?.contents) {
       return buildResponse(400, "Empty request body.");
     }
 
+    // ── 2. Parse JSON ──────────────────────────────────────────────────────
     let payload;
     try {
       payload = JSON.parse(e.postData.contents);
@@ -53,6 +46,21 @@ function doPost(e) {
       return buildResponse(400, "Invalid JSON: " + parseErr.message);
     }
 
+    // ── 3. Auth: webhook token OR Google session ───────────────────────────
+    // External tools (curl, iOS Shortcuts, n8n) send { "webhook_secret": "..." }
+    // in the JSON body. If the token matches WEBHOOK_SECRET in Script Properties,
+    // the session check is bypassed. Otherwise, fall back to email verification.
+    if (!SecurityAgent_checkWebhookToken(payload.webhook_secret)) {
+      SecurityAgent_checkAuthorization();
+    }
+
+    logEvent('WEBHOOK_RECEIVED', {
+      timestamp:   new Date().toISOString(),
+      contentType: e?.contentType || 'unknown',
+      hasBody:     true
+    });
+
+    // ── 4. Require an action field ─────────────────────────────────────────
     const action = (payload.action || "").toLowerCase().trim();
     if (!action) {
       return buildResponse(400, "Missing required field: action");
@@ -60,6 +68,7 @@ function doPost(e) {
 
     logEvent('ROUTING', { action });
 
+    // ── 5. Route to the correct Agent ──────────────────────────────────────
     switch (action) {
 
       case "fileops":
@@ -74,6 +83,9 @@ function doPost(e) {
       // ── Register new Agents below this line ───────────────────────────
       case "inventory":
         return _Router_wrapResponse(InventoryAgent_init(payload));
+
+      case "route":
+        return _Router_wrapResponse(routeToModel(payload));
 
       // case "agentname":
       //   return AgentName_init(payload);

@@ -296,6 +296,40 @@ function SecurityAgent_viewConfiguration() {
 }
 
 // =============================================================================
+// WEBHOOK TOKEN AUTH — External Tool Support
+// =============================================================================
+
+/**
+ * Validates a webhook token against the stored WEBHOOK_SECRET Script Property.
+ *
+ * Use this to allow curl, iOS Shortcuts, n8n, and other external tools to POST
+ * without a Google session. The caller includes { "webhook_secret": "<token>" }
+ * in the JSON payload. Router.gs checks this before falling back to session auth.
+ *
+ * Setup: store your secret once in Script Properties:
+ *   PropertiesService.getScriptProperties().setProperty('WEBHOOK_SECRET', '<your-secret>');
+ *
+ * @param {string} token - The webhook_secret value from the incoming payload
+ * @returns {boolean} true if token is valid, false if missing/wrong/not configured
+ */
+function SecurityAgent_checkWebhookToken(token) {
+  if (!token) return false;
+
+  const storedSecret = PropertiesService.getScriptProperties().getProperty('WEBHOOK_SECRET');
+  if (!storedSecret) return false;
+
+  const authorized = (token === storedSecret);
+
+  SecurityAgent_logEvent(
+    authorized ? 'WEBHOOK_TOKEN_AUTHORIZED' : 'WEBHOOK_TOKEN_REJECTED',
+    authorized ? 'INFO' : 'WARN',
+    { timestamp: new Date().toISOString() }
+  );
+
+  return authorized;
+}
+
+// =============================================================================
 // TEST FUNCTIONS
 // =============================================================================
 
