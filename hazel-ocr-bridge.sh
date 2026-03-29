@@ -118,14 +118,16 @@ if [ $OCR_EXIT -eq 0 ]; then
   esac
 
   # Log success to Google Sheet
-  curl -s -L "$WEBAPP_URL" \
+  REDIRECT=$(curl -s -o /dev/null -w "%{redirect_url}" -X POST \
+    "$WEBAPP_URL" \
     -H "Content-Type: application/json" \
     -d "{
       \"filename\": \"$OCR_FILENAME\",
       \"project\": \"$PROJECT_TAG\",
       \"summary\": \"OCR complete. Routed to $PROJECT_TAG.\",
       \"platform\": \"Docker-OCR\"
-    }"
+    }")
+  curl -s "$REDIRECT"
 
 else
   # OCR failed — quarantine original file
@@ -134,14 +136,16 @@ else
   mkdir -p "$FOLDER_QUARANTINE"
   mv "$FILE_PATH" "$FOLDER_QUARANTINE/$FILENAME"
 
-  curl -s -L "$WEBAPP_URL" \
+  REDIRECT=$(curl -s -o /dev/null -w "%{redirect_url}" -X POST \
+    "$WEBAPP_URL" \
     -H "Content-Type: application/json" \
     -d "{
       \"filename\": \"$FILENAME\",
       \"project\": \"OCR-Failed\",
       \"summary\": \"OCR failed. Original moved to Quarantine.\",
       \"platform\": \"Docker-OCR\"
-    }"
+    }")
+  curl -s "$REDIRECT"
 
 fi
 
