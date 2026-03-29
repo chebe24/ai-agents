@@ -106,7 +106,7 @@ function _callGemini(prompt, context) {
 
   var fullPrompt = context ? 'Context:\n' + context + '\n\nTask:\n' + prompt : prompt;
   var body = { contents: [{ parts: [{ text: fullPrompt }] }] };
-  var url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + apiKey;
+  var url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=' + apiKey;
 
   try {
     var response = UrlFetchApp.fetch(url, {
