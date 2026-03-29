@@ -92,7 +92,7 @@ nexus-command/                      ← Git repo root (~/Developer.nosync/21_sys
 
 GitHub Secrets (stored in the chebe24/nexus-command repo):
 - `CLASDEV_JSON` — clasp OAuth token for dev
-- `CLASPRC` — clasp OAuth token for prod
+- `CLASPRC_JSON` — clasp OAuth token for prod
 
 ---
 
